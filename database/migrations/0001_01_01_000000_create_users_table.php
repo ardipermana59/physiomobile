@@ -17,6 +17,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->unsignedInteger('id_type')->nullable(); // I dont know for specific. So i left it nullable
+            $table->unsignedInteger('id_no')->nullable(); // I dont know for specific. So i left it nullable
+            $table->enum('gender', ['male', 'female'])->nullable(); // I dont know for specific. So i left it nullable
+            $table->date('dob')->nullable(); // I dont know for specific. So i left it nullable
+            $table->text('address')->nullable(); // I dont know for specific. So i left it nullable
             $table->rememberToken();
             $table->timestamps();
         });

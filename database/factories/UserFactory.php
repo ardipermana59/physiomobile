@@ -29,15 +29,21 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'id_type'   => rand(1, 9999),
+            'id_no'     => rand(1, 9999),
+            'gender'    => $this->faker->randomElement(['male', 'female']),
+            'dob'       => $this->faker->date('Y-m-d', '-18 years'),
+            'address'   => $this->faker->address(),
         ];
     }
+
 
     /**
      * Indicate that the model's email address should be unverified.
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'email_verified_at' => null,
         ]);
     }
